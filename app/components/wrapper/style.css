@@ -1,0 +1,10 @@
+.layout {
+    .react-grid-item {
+        height: auto !important;
+    }
+}
+
+/* When hovering container, force track visible */
+.scroll-container:hover .custom-scrollbar-track {
+  opacity: 1 !important;
+}
