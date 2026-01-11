@@ -11,6 +11,7 @@ export default function Navbar() {
     { label: "About", url: "/about" },
     { label: "Tools", url: "/tools" },
     { label: "Projects", url: "/projects" },
+    {label: "Blog", url: "/blog"},
     // { label: "Contact", url: "/contact" },
   ];
 
@@ -22,7 +23,7 @@ export default function Navbar() {
       <div className='max-w-7xl mx-auto flex items-center justify-between px-6'>
         <div className="hidden sm:flex items-center gap-2 sm:gap-3 md:gap-4">
           <img
-            src="/images/mylogo3.png"
+            src="/images/mylogo2.png"
             alt="Abstract icon"
             className="
              h-14 w-14
