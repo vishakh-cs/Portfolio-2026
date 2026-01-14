@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -11,7 +12,7 @@ export default function Navbar() {
     { label: "About", url: "/about" },
     { label: "Tools", url: "/tools" },
     { label: "Projects", url: "/projects" },
-    {label: "Blog", url: "/blog"},
+    { label: "Blog", url: "/blog" },
     // { label: "Contact", url: "/contact" },
   ];
 
@@ -22,17 +23,20 @@ export default function Navbar() {
     <nav className='w-full justify-center py-2 sticky top-0 z-50 '>
       <div className='max-w-7xl mx-auto flex items-center justify-between px-6'>
         <div className="hidden sm:flex items-center gap-2 sm:gap-3 md:gap-4">
-          <img
+          <Image
             src="/images/mylogo2.png"
             alt="Abstract icon"
+            width={96}
+            height={96}
             className="
-             h-14 w-14
-             sm:h-16 sm:w-16
-             md:h-20 md:w-20
-             lg:h-24 lg:w-24
-             object-cover
-             shrink-0
-            "
+    h-14 w-14
+    sm:h-16 sm:w-16
+    md:h-20 md:w-20
+    lg:h-24 lg:w-24
+    object-cover
+    shrink-0
+  "
+            priority
           />
 
 

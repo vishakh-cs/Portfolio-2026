@@ -1,4 +1,6 @@
-export const blogs = [
+import { Blog } from "@/app/blog/page";
+
+export const blogs: Blog[] = [
   {
     id: 1,
     title: "Building Scalable React Applications",

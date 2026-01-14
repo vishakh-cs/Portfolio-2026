@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { AiFillGithub } from "react-icons/ai";
-import { FiGithub } from "react-icons/fi";
 
 export default function ProjectsPage() {
     const projects = [

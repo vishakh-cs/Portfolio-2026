@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
 import welcomeAnimation from "../../public/assets/Welcome.json";
 import Lottie from "lottie-react";
+import Image from 'next/image';
 
 export default function Tools() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -462,11 +463,14 @@ export default function Tools() {
               whileHover={{ scale: 1.04 }}
             >
               <div className="flex flex-col items-center space-y-4 mb-5">
-                <img
+                <Image
                   src={tool.img}
                   alt={tool.name}
-                  className="w-16 h-16 object-contain"
+                  width={64}
+                  height={64}
+                  className="object-contain"
                 />
+
                 <h3 className="text-lg font-semibold text-indigo-700">
                   {tool.name}
                 </h3>

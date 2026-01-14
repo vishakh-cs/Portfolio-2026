@@ -17,8 +17,17 @@ import {
 } from '@/components/ui/dialog';
 import { blogs } from '../utils/data/blog';
 
+export type Blog = {
+    id: number;
+    title: string;
+    description: string;
+    tag: string;
+    date: string;
+    content: string;
+};
+
 export default function Blogs() {
-    const [selectedBlog, setSelectedBlog] = useState<any>(null);
+    const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
 
     return (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

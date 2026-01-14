@@ -6,7 +6,6 @@ import Image from "next/image";
 import { GoArrowUpRight } from "react-icons/go";
 import CustomScrollWrapper from "../wrapper/scrollWrapper";
 import { BiCopy } from "react-icons/bi";
-import { motion } from "framer-motion";
 import ProfileCarousel from './profileSlider';
 
 export default function Hero() {
@@ -134,11 +133,14 @@ export default function Hero() {
                                             key={i}
                                             className='bg-white/20 backdrop-blur-md border border-white/30 rounded-xl p-4 flex flex-col items-center shadow-lg hover:scale-110 transition duration-300'
                                         >
-                                            <img
+                                            <Image
                                                 src={tech.logo}
                                                 alt={tech.name}
-                                                className='w-12 h-12 mb-2'
+                                                width={48}
+                                                height={48}
+                                                className="mb-2"
                                             />
+
                                             <span className='font-semibold'>{tech.name}</span>
                                         </div>
                                     ))}

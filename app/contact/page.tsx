@@ -1,20 +1,21 @@
-import React from "react";
+import React, { JSX } from "react";
 
 export default function Contact(): JSX.Element {
   return (
     <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center py-16 px-6">
       <div className="max-w-4xl w-full bg-white rounded-2xl shadow-lg p-10 border border-gray-200">
-        
+
         {/* Heading */}
         <h1 className="text-3xl font-bold text-gray-900 text-center mb-3">
           Get in Touch
         </h1>
         <p className="text-gray-600 text-center mb-10 max-w-xl mx-auto">
-          Have a question or want to work together? Fill out the form and I'll respond as soon as possible.
+          Have a question or want to work together? Fill out the form and I&apos;ll respond as soon as possible.
         </p>
 
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          
+
           {/* Contact Form */}
           <form className="space-y-6">
             <div>

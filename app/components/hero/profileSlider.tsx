@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { BiLeftArrow } from "react-icons/bi";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default function ProfileCarousel() {
