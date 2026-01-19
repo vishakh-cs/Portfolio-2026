@@ -54,7 +54,7 @@
   opacity: 0;
 }
 
-/* 📱 Very small devices (≤ 360px) */
+
 @media (max-width: 360px) {
   .loading-text span {
     font-size: 42px;
