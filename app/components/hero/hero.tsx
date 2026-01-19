@@ -221,7 +221,7 @@ export default function Hero() {
                     {/* Github */}
 
                     <a
-                        href="https://github.com/your-username"
+                        href="https://github.com/vishakh-cs"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-gray-900 text-white rounded-2xl shadow-md flex flex-col items-center justify-center h-36 hover:scale-105 transition-transform duration-300"

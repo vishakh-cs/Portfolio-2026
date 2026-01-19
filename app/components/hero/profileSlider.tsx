@@ -7,7 +7,7 @@ export default function ProfileCarousel() {
         {
             id: 1,
             type: "resume",
-            href: "/resume.pdf",
+            href: "/vishakhcsresume.pdf",
             title: "Download Resume",
             subtitle: "Grab my latest CV",
             icon: <path d="M12 16l4-5h-3V4h-2v7H8l4 5zm-7 2h14v2H5v-2z" />,
@@ -15,7 +15,7 @@ export default function ProfileCarousel() {
         {
             id: 2,
             type: "linkedin",
-            href: "https://www.linkedin.com/in/your-profile",
+            href: "https://www.linkedin.com/in/vishakh-cs",
             title: "LinkedIn",
             subtitle: "Connect with me",
             icon: (
