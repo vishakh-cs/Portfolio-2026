@@ -121,7 +121,7 @@ export default function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ duration: 0.3 }}
               role="dialog"
               aria-modal="true"
             >
