@@ -121,11 +121,10 @@ export default function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              transition={{ type: "spring", stiffness: 300 }}
               role="dialog"
               aria-modal="true"
             >
-              {/* CLOSE */}
               <button
                 onClick={() => setOpen(false)}
                 className="self-end text-sm text-gray-500"
@@ -133,7 +132,6 @@ export default function Navbar() {
                 Close ✕
               </button>
 
-              {/* NAV ITEMS */}
               {navItems.map((item) => {
                 const active = isActive(item.url);
 
@@ -144,7 +142,7 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className={`text-lg font-medium px-2 py-2 rounded-md transition
                       ${active
-                        ? "text-purple-600"
+                        ? "text-purple-600 bg-purple-100"
                         : "text-gray-700 hover:bg-gray-100"
                       }`}
                   >
