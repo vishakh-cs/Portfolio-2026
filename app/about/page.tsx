@@ -38,7 +38,7 @@ export default function About() {
             company: "Brototype",
             location: "Trivandrum, India",
             period: "2023 - 2024",
-            projects: ["SaaS Applications", "E-commerce Platforms", "React.js", "Next.js", "Node.js", "MongoDB"],
+            projects: ["SaaS Applications", "E-commerce Platforms", "Razorpay", "React.js", "Next.js", "Node.js", "MongoDB"],
             description: "Gained hands-on experience in modern web development frameworks and best practices."
         },
     ];
