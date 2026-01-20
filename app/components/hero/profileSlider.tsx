@@ -50,7 +50,7 @@ export default function ProfileCarousel() {
     };
 
     return (
-        <div className="relative w-full max-w-sm h-64 md:h-44 mx-auto overflow-hidden rounded-2xl">
+        <div className="relative w-full max-w-lg h-48 md:h-44 mx-auto overflow-hidden rounded-2xl">
             {/* Slider Track */}
             <motion.div
                 className="flex h-full"

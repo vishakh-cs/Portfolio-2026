@@ -468,6 +468,7 @@ export default function Tools() {
                   alt={tool.name}
                   width={64}
                   height={64}
+                  unoptimized
                   className="object-contain"
                 />
 

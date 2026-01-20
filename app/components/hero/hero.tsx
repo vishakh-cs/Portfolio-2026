@@ -7,9 +7,12 @@ import { GoArrowUpRight } from "react-icons/go";
 import CustomScrollWrapper from "../wrapper/scrollWrapper";
 import { BiCopy } from "react-icons/bi";
 import ProfileCarousel from './profileSlider';
+import { useRouter } from 'next/navigation';
 
 export default function Hero() {
     const [copied, setCopied] = useState(false);
+
+    const navigate = useRouter();
 
     const handleCopy = () => {
         navigator.clipboard.writeText("vishakhcs51@gmail.com");
@@ -26,122 +29,168 @@ export default function Hero() {
                     </div>
 
                     {/* Projects */}
-                    <div className="bg-white rounded-2xl p-0 flex flex-col overflow-hidden relative group h-64 md:row-span-4 md:h-auto">
-                        {/* Floating Action Button (Top Right) */}
+                    <div
+                        className="
+    bg-white rounded-2xl overflow-hidden relative group
+    flex flex-col
+    min-h-[220px] sm:min-h-[260px] md:min-h-0
+    md:row-span-4 md:h-auto
+  "
+                    >
+                        {/* Floating Action Button */}
                         <div className="absolute top-3 right-3 z-20">
                             <button
-                                className="w-9 h-9 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-md 
-                                  shadow-md transition-all duration-300 group-hover:bg-gradient-to-r 
-                                  group-hover:from-indigo-500 group-hover:to-purple-500"
+                                className="
+        w-10 h-10 md:w-9 md:h-9
+        flex items-center justify-center
+        rounded-full
+        bg-white/90 backdrop-blur-md
+        shadow-md
+        transition-all duration-300
+        group-hover:bg-gradient-to-r
+        group-hover:from-indigo-500
+        group-hover:to-purple-500
+        active:scale-95
+      "
+                                aria-label="Open project"
                             >
-                                <GoArrowUpRight className="text-gray-700 group-hover:text-white transition-transform duration-300 group-hover:rotate-45" />
+                                <GoArrowUpRight
+                                    className="
+          text-gray-700
+          transition-transform duration-300
+          md:group-hover:text-white
+          md:group-hover:rotate-45
+        "
+                                />
                             </button>
                         </div>
 
+                        {/* IMAGE */}
                         <div className="flex-1 relative">
                             <Image
                                 src="/images/dashboard-img.jpg"
                                 alt="Dashboard Preview"
                                 fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                className="
+        object-cover
+        transition-transform duration-500
+        md:group-hover:scale-110
+      "
+                                sizes="(max-width: 640px) 100vw, 50vw"
+                                priority
                             />
 
-                            {/* Overlay on Hover */}
-                            <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center gap-2 
-                    opacity-0 group-hover:opacity-100 transition-all duration-500">
-                                <h2 className="text-white text-2xl font-bold tracking-wide">Projects</h2>
-                                <p className="text-white/80 text-sm">Explore my latest work and case studies</p>
+                            {/* OVERLAY */}
+                            <div
+                                className="
+        absolute inset-0
+        bg-black/60
+        flex flex-col items-center justify-center gap-1.5
+        text-center
+        px-4
+
+        opacity-100 md:opacity-0
+        md:group-hover:opacity-100
+        transition-opacity duration-500
+      "
+                            >
+                                <h2 className="text-white text-lg sm:text-xl md:text-2xl font-bold tracking-wide">
+                                    Projects
+                                </h2>
+                                <p className="text-white/80 text-xs sm:text-sm">
+                                    Explore my latest work and case studies
+                                </p>
                             </div>
                         </div>
                     </div>
 
-
                     {/* Tech Stack Section */}
-                    <div className='bg-white rounded-2xl p-0 flex flex-col overflow-hidden relative group md:row-span-6 h-64 md:h-[44rem] md:max-h-[40rem]'>
+                    <div
+                        className="
+    bg-white rounded-2xl overflow-hidden relative group
+    flex flex-col
+    min-h-[260px] sm:min-h-[320px]
+    md:row-span-6 md:min-h-[36rem]
+  "
+                    >
+                        {/* BOTTOM GRADIENT BAR */}
                         <div
-                            className='absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/80 via-black/40 to-transparent 
-                        flex items-center justify-between px-6 opacity-0 group-hover:opacity-100 
-                        transition-all duration-500 ease-in-out z-20 rounded-t-4xl backdrop-blur-sm'
+                            className="
+      absolute bottom-0 left-0 w-full
+      h-20 sm:h-24
+      bg-gradient-to-t from-black/80 via-black/40 to-transparent
+      flex items-center justify-between px-4 sm:px-6
+      opacity-100 md:opacity-0
+      md:group-hover:opacity-100
+      transition-opacity duration-500
+      z-20 backdrop-blur-sm
+    "
                         >
-                            <span className='text-white font-semibold text-xl tracking-wide flex items-center gap-3'>
-                                <span className='relative'>
+                            <span onClick={() => navigate.push("/tools")} className="text-white font-semibold text-base sm:text-lg tracking-wide flex items-center gap-2 sm:gap-3">
+                                <span className="relative">
                                     Tech Stack
-                                    <span className='absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 rounded-full'></span>
+                                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full" />
                                 </span>
-                                <FaArrowRight className='text-white text-lg transform group-hover:translate-x-1 transition duration-300' />
+                                <FaArrowRight className="text-white text-sm sm:text-lg md:group-hover:translate-x-1 transition duration-300" />
                             </span>
                         </div>
 
-                        {/* Background Image */}
-                        <div className='flex-1 relative'>
+                        {/* BACKGROUND IMAGE */}
+                        <div className="flex-1 relative">
                             <Image
-                                src='/images/abstract.jpg'
-                                alt='Dashboard Preview'
+                                src="/images/abstract.jpg"
+                                alt="Tech Stack Background"
                                 fill
-                                className='object-cover'
+                                className="object-cover"
+                                sizes="(max-width: 640px) 100vw, 50vw"
+                                priority
                             />
 
-                            {/* Tech Stack Grid */}
-                            <div className='absolute inset-0 flex items-center justify-center p-4'>
+                            {/* TECH GRID */}
+                            <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
                                 <div
-                                    className='
-                grid grid-cols-2 sm:grid-cols-3 gap-4 mt-2 text-gray-950 transition
-                rotate-0 translate-y-0 
-                md:rotate-[35deg] md:-translate-y-1/2
-                group-hover:scale-105 group-hover:rotate-0 duration-500
-            '
+                                    className="
+          grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4
+          transition-transform duration-500
+
+          rotate-0 translate-y-0
+          md:rotate-[35deg] md:-translate-y-1/2
+          md:group-hover:rotate-0 md:group-hover:scale-105
+        "
                                 >
                                     {[
-                                        {
-                                            name: "Tailwind",
-                                            logo: "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg",
-                                        },
-                                        {
-                                            name: "React",
-                                            logo: "https://cdn.worldvectorlogo.com/logos/react-2.svg",
-                                        },
-                                        {
-                                            name: "Next.js",
-                                            logo: "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg",
-                                        },
-                                        {
-                                            name: "Node.js",
-                                            logo: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg",
-                                        },
-                                        {
-                                            name: "Nest.js",
-                                            logo: "https://upload.wikimedia.org/wikipedia/commons/a/a8/NestJS.svg",
-                                        },
-                                        {
-                                            name: "Postman",
-                                            logo: "https://cdn.worldvectorlogo.com/logos/postman.svg",
-                                        },
-                                        {
-                                            name: "Swagger",
-                                            logo: "https://www.svgrepo.com/show/342276/swagger.svg",
-                                        },
-                                        {
-                                            name: "Figma",
-                                            logo: "https://www.svgrepo.com/show/361494/figma-logo.svg",
-                                        },
-                                        {
-                                            name: "AWS",
-                                            logo: "https://cdn.worldvectorlogo.com/logos/amazon-web-services-1.svg",
-                                        },
+                                        { name: "Tailwind", logo: "https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg" },
+                                        { name: "React", logo: "https://cdn.worldvectorlogo.com/logos/react-2.svg" },
+                                        { name: "Next.js", logo: "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" },
+                                        { name: "Node.js", logo: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" },
+                                        { name: "Nest.js", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a8/NestJS.svg" },
+                                        { name: "Postman", logo: "https://cdn.worldvectorlogo.com/logos/postman.svg" },
+                                        { name: "Swagger", logo: "https://www.svgrepo.com/show/342276/swagger.svg" },
+                                        { name: "Figma", logo: "https://www.svgrepo.com/show/361494/figma-logo.svg" },
+                                        { name: "AWS", logo: "https://cdn.worldvectorlogo.com/logos/amazon-web-services-1.svg" },
                                     ].map((tech, i) => (
                                         <div
                                             key={i}
-                                            className='bg-white/20 backdrop-blur-md border border-white/30 rounded-xl p-4 flex flex-col items-center shadow-lg hover:scale-110 transition duration-300'
+                                            className="
+              bg-white/20 backdrop-blur-md border border-white/30
+              rounded-xl
+              p-3 sm:p-4
+              flex flex-col items-center
+              shadow-lg
+              hover:scale-105 md:hover:scale-110
+              transition duration-300
+            "
                                         >
                                             <Image
                                                 src={tech.logo}
                                                 alt={tech.name}
-                                                width={48}
-                                                height={48}
-                                                className="mb-2"
+                                                width={36}
+                                                height={36}
+                                                className="mb-2 sm:w-12 sm:h-12"
                                             />
-
-                                            <span className='font-semibold'>{tech.name}</span>
+                                            <span className="text-xs sm:text-sm font-semibold text-gray-900">
+                                                {tech.name}
+                                            </span>
                                         </div>
                                     ))}
                                 </div>
@@ -149,13 +198,12 @@ export default function Hero() {
                         </div>
                     </div>
 
-
                     {/* How it started vs How it’s going */}
-                    <div className="relative bg-white rounded-2xl p-6 flex flex-col justify-between h-64 md:col-span-2 md:row-span-4 md:h-auto overflow-hidden group">
+                    <div className="relative bg-white rounded-2xl p-4 md:p-6 flex flex-col justify-between h-auto md:h-64 md:col-span-2 md:row-span-4 md:h-auto overflow-hidden group">
                         {/* Decorative SVG Overlay */}
                         <div className="absolute inset-0 pointer-events-none">
                             <svg
-                                className="absolute -top-10 -right-10 w-40 h-40 text-indigo-100 opacity-40"
+                                className="absolute -top-6 -right-6 md:-top-10 md:-right-10 w-28 h-28 md:w-40 md:h-40 text-indigo-100 opacity-40"
                                 fill="currentColor"
                                 viewBox="0 0 200 200"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +211,7 @@ export default function Hero() {
                                 <path d="M44.8,-77.6C56.2,-68.2,64.7,-55.1,71.7,-41.3C78.8,-27.5,84.5,-13,84.2,0.2C83.9,13.4,77.5,26.8,68.2,38.4C58.9,50,46.7,59.7,33.2,68C19.7,76.3,4.8,83.2,-9.8,87.2C-24.4,91.1,-48.8,92.2,-65.2,81.3C-81.5,70.4,-89.8,47.5,-91.6,26.2C-93.4,5,-88.7,-14.6,-78.4,-28.7C-68.2,-42.9,-52.4,-51.7,-37.2,-61.1C-22,-70.5,-7.3,-80.4,7.8,-89.6C22.8,-98.8,45.6,-107,44.8,-77.6Z" transform="translate(100 100)" />
                             </svg>
                             <svg
-                                className="absolute -bottom-12 -left-12 w-48 h-48 text-pink-100 opacity-30"
+                                className="absolute -bottom-8 -left-8 md:-bottom-12 md:-left-12 w-32 h-32 md:w-48 md:h-48 text-pink-100 opacity-30"
                                 fill="currentColor"
                                 viewBox="0 0 200 200"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -174,15 +222,15 @@ export default function Hero() {
 
                         {/* Content */}
                         <div className="relative z-10">
-                            <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-                                ✨ How it started <span className="text-gray-400">vs.</span> How it’s going
+                            <h3 className="font-bold text-base md:text-lg mb-2 md:mb-3 flex items-center gap-1 md:gap-2">
+                                ✨ How it started <span className="text-gray-400">vs.</span> How it's going
                             </h3>
-                            <p className="text-gray-700 text-sm mb-3 leading-relaxed">
+                            <p className="text-gray-700 text-xs md:text-sm mb-2 md:mb-3 leading-relaxed">
                                 From experimenting with simple <span className="font-medium text-indigo-600">HTML & CSS</span> over{" "}
                                 <span className="font-semibold text-purple-600">8 years ago</span>, to building dynamic{" "}
                                 <span className="font-medium text-pink-600">Front-End</span> and{" "}
                                 <span className="font-medium text-green-600">Back-End</span> systems today,
-                                Along the way, I’ve contributed to impactful projects across{" "}
+                                Along the way, I've contributed to impactful projects across{" "}
                                 <span className="font-semibold text-blue-600">HRMS platforms</span>,{" "}
                                 <span className="font-semibold text-emerald-600">Financial solutions</span>,{" "}
                                 <span className="font-semibold text-red-500">Healthcare systems</span>,{" "}
@@ -191,30 +239,26 @@ export default function Hero() {
                                 delivering scalable, secure, and user-focused digital products in each domain.
                             </p>
 
-
-                            <p className="text-gray-700 text-sm leading-relaxed">
+                            <p className="text-gray-700 text-xs md:text-sm leading-relaxed">
                                 I began as a <span className="font-semibold text-purple-600">self-taught enthusiast</span>, fascinated by how design and
                                 code merge to create seamless experiences. Today, I craft modern, scalable solutions across{" "}
                                 <span className="underline decoration-wavy decoration-blue-400">Web</span>,{" "}
                                 <span className="underline decoration-wavy decoration-green-400">Mobile Applications</span>,{" "}
                                 <span className="underline decoration-wavy decoration-pink-400">AI-powered Systems</span>, and{" "}
                                 <span className="underline decoration-wavy decoration-yellow-400">Server Infrastructure</span>.
-                                {/* Blending creativity and performance to build impactful digital products. */}
                             </p>
                         </div>
 
                         {/* Footer */}
-                        <div className="relative mt-4 z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-2 ">
+                        <div className="relative mt-3 md:mt-4 z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-1 md:gap-2">
                             <span className="text-gray-500 text-xs italic tracking-wide">
                                 Always curious, always learning, and always building.
                             </span>
-                            <button className="flex items-center cursor-pointer mt-2 md:mt-0 self-start md:self-auto px-4 py-2 font-semibold rounded-lg shadow-lg bg-white/20 backdrop-blur-md border border-white/30 opacity-0 group-hover:opacity-100 transition duration-300">
-                                Read More <FaArrowRight className="ml-2" />
+                            <button onClick={() => navigate.push("/about")} className="flex items-center cursor-pointer mt-1 md:mt-0 self-start md:self-auto px-3 py-1.5 md:px-4 md:py-2 font-semibold text-sm md:text-base rounded-lg shadow-lg bg-white/20 backdrop-blur-md border border-white/30 opacity-0 group-hover:opacity-100 transition duration-300">
+                                Read More <FaArrowRight className="ml-1 md:ml-2" />
                             </button>
                         </div>
-
                     </div>
-
                     {/* LinkedIn */}
                     <ProfileCarousel />
 
@@ -253,13 +297,14 @@ export default function Hero() {
                     </a>
 
                     {/* Blog */}
-                    <div className="bg-white rounded-2xl p-6 flex flex-col justify-between h-64 md:col-span-2 md:h-auto">
-                        <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
+                    <div className="bg-white rounded-2xl p-4 md:p-6 flex flex-col justify-between h-auto md:col-span-2 md:h-auto">
+                        <h3 className="font-bold text-base md:text-lg mb-3 md:mb-4 flex items-center gap-1 md:gap-2">
                             📝 Blog
                         </h3>
-                        <CustomScrollWrapper height={"10rem"}>
+
+                        <CustomScrollWrapper height={"8rem"} >
                             {/* Blog List */}
-                            <div className="flex flex-col gap-3 overflow-y-auto">
+                            <div className="flex flex-col gap-2 md:gap-3 overflow-y-auto">
                                 {[
                                     {
                                         title: "Mastering Full-Stack Development",
@@ -280,9 +325,9 @@ export default function Hero() {
                                     <a
                                         key={i}
                                         href={post.link}
-                                        className="group flex flex-col bg-gray-50 rounded-lg p-3 hover:bg-indigo-50 transition"
+                                        className="group flex flex-col bg-gray-50 rounded-lg p-2 md:p-3 hover:bg-indigo-50 transition"
                                     >
-                                        <span className="text-sm font-semibold text-gray-800 group-hover:text-indigo-600">
+                                        <span className="text-xs md:text-sm font-semibold text-gray-800 group-hover:text-indigo-600">
                                             {post.title}
                                         </span>
                                         <span className="text-xs text-gray-500">{post.date}</span>
@@ -290,11 +335,12 @@ export default function Hero() {
                                 ))}
                             </div>
                         </CustomScrollWrapper>
+
                         {/* Footer */}
-                        <div className="mt-4">
+                        <div className="mt-3 md:mt-4">
                             <a
                                 href="#"
-                                className="text-indigo-600 text-sm font-medium hover:underline flex items-center gap-1"
+                                className="text-indigo-600 text-xs md:text-sm font-medium hover:underline flex items-center gap-1"
                             >
                                 View All Posts <span>→</span>
                             </a>

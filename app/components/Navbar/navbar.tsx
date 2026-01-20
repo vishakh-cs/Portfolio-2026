@@ -21,14 +21,14 @@ export default function Navbar() {
   const isActive = (url: string) =>
     url === "/" ? pathname === "/" : pathname.startsWith(url);
 
-  /* 🔒 Auto-close on scroll */
+
   useEffect(() => {
     const closeOnScroll = () => setOpen(false);
     window.addEventListener("scroll", closeOnScroll);
     return () => window.removeEventListener("scroll", closeOnScroll);
   }, []);
 
-  /* ⌨️ Close on ESC */
+
   useEffect(() => {
     const escHandler = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -39,11 +39,10 @@ export default function Navbar() {
 
   return (
     <>
-      {/* NAVBAR */}
+
       <nav className="sticky top-0 z-50 backdrop-blur">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-2">
 
-          {/* LOGO */}
           <Image
             src="/images/mylogo2.png"
             alt="Logo"
@@ -53,7 +52,6 @@ export default function Navbar() {
             priority
           />
 
-          {/* DESKTOP NAV */}
           <div className="hidden md:flex items-center px-6 py-2 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full gap-2">
             {navItems.map((item) => {
               const active = isActive(item.url);
@@ -65,8 +63,6 @@ export default function Navbar() {
                   className="relative px-4 py-2 text-sm font-medium text-gray-700"
                 >
                   <span>{item.label}</span>
-
-                  {/* ✨ Active underline animation */}
                   {active && (
                     <motion.span
                       layoutId="nav-underline"
@@ -79,7 +75,6 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* RIGHT CTA + MOBILE TOGGLE */}
           <div className="flex items-center gap-2">
             <Link
               href="/contact"
@@ -87,8 +82,6 @@ export default function Navbar() {
             >
               Get In Touch
             </Link>
-
-            {/* 🍔 Hamburger */}
             <button
               onClick={() => setOpen(true)}
               className="md:hidden p-2 rounded-full bg-white/20 backdrop-blur border border-white/30"
@@ -101,12 +94,9 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
-      {/* MOBILE DRAWER */}
       <AnimatePresence>
         {open && (
           <>
-            {/* BACKDROP */}
             <motion.div
               className="fixed inset-0 bg-black/40 z-40"
               initial={{ opacity: 0 }}
@@ -115,7 +105,6 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
             />
 
-            {/* DRAWER */}
             <motion.aside
               className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-white z-50 p-6 flex flex-col gap-4"
               initial={{ x: "100%" }}

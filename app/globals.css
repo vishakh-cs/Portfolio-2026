@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.font-caveat {
+  font-family: var(--font-caveat), cursive;
+}
+
+
 .grid-background {
   background-color: #F7F2F2;
 }
