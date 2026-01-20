@@ -35,10 +35,10 @@ export default function About() {
         },
         {
             role: "MERN Stack Intern",
-            company: "Bprototype",
-            location: "Coimbatore, India",
+            company: "Brototype",
+            location: "Trivandrum, India",
             period: "2023 - 2024",
-            projects: ["SaaS Applications", "E-commerce Platforms", "React.js", "Node.js", "MongoDB"],
+            projects: ["SaaS Applications", "E-commerce Platforms", "React.js", "Next.js", "Node.js", "MongoDB"],
             description: "Gained hands-on experience in modern web development frameworks and best practices."
         },
     ];
@@ -49,14 +49,14 @@ export default function About() {
             institution: "University Institute of Technology",
             period: "2020 - 2023",
             location: "Trivandrum, India",
-            gpa: "8.5/10"
+            // gpa: "8.5/10"
         },
         {
             degree: "Higher Secondary",
             institution: "St. Joseph Higher Secondary School",
             period: "2018 - 2020",
             location: "Trivandrum, India",
-            gpa: "92%"
+            // gpa: "92%"
         }
     ];
 
