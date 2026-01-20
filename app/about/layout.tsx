@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={caveat.variable}>
+      <body className={`${caveat.className} ${caveat.variable}`}>
         {children}
       </body>
     </html>
