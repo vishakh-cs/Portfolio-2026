@@ -6,7 +6,8 @@
   height: 90px;
   background: radial-gradient(circle at 30% 30%, #ff7676, #e63946 70%, #8e1d1d);
   border-radius: 50% 50% 45% 55%;
-  box-shadow: inset -8px -10px 20px rgba(0, 0, 0, 0.3),
+  box-shadow:
+    inset -8px -10px 20px rgba(0, 0, 0, 0.3),
     0 10px 20px rgba(0, 0, 0, 0.2);
   animation: float 5s ease-in-out infinite;
   transition: transform 0.3s ease;

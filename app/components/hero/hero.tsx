@@ -1,5 +1,5 @@
 import './style.css'
-import React, { useState } from "react";
+import { useState } from "react";
 import ProfileSection from "./profileSection";
 import { FaArrowRight } from "react-icons/fa";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import CustomScrollWrapper from "../wrapper/scrollWrapper";
 import { BiCopy } from "react-icons/bi";
 import ProfileCarousel from './profileSlider';
 import { useRouter } from 'next/navigation';
-
+import confetti from 'canvas-confetti';
 export default function Hero() {
     const [copied, setCopied] = useState(false);
 
@@ -17,8 +17,19 @@ export default function Hero() {
     const handleCopy = () => {
         navigator.clipboard.writeText("vishakhcs51@gmail.com");
         setCopied(true);
+        handleConfetti4();
         setTimeout(() => setCopied(false), 2000);
     };
+
+    const handleConfetti4 = () => {
+        confetti({
+            particleCount: 200,
+            startVelocity: 50,
+            spread: 360,
+            origin: { x: Math.random(), y: Math.random() },
+        });
+    };
+
     return (
         <div className='relative z-10'>
             <div className='w-full flex justify-center p-4 '>
@@ -304,28 +315,28 @@ export default function Hero() {
                         </h3>
 
                         <CustomScrollWrapper height={"8rem"} >
-                            {/* Blog List */}
+
                             <div className="flex flex-col gap-2 md:gap-3 overflow-y-auto">
                                 {[
                                     {
-                                        title: "Mastering Full-Stack Development",
+                                        title: "From Code to Canvas: My Journey of Bringing ideas to Life",
                                         link: "#",
-                                        date: "Aug 25, 2025",
+                                        date: "Nov 2025",
                                     },
                                     {
-                                        title: "How AI is Transforming Web Apps",
+                                        title: "Getting Started with Next.js 14",
                                         link: "#",
-                                        date: "Aug 12, 2025",
+                                        date: "Jan 2024",
                                     },
                                     {
-                                        title: "Design Systems with Figma & Tailwind",
+                                        title: "TypeScript Best Practices",
                                         link: "#",
-                                        date: "Jul 30, 2025",
+                                        date: "Jan 2024",
                                     },
                                 ].map((post, i) => (
                                     <a
                                         key={i}
-                                        href={post.link}
+                                        href={'/blog'}
                                         className="group flex flex-col bg-gray-50 rounded-lg p-2 md:p-3 hover:bg-indigo-50 transition"
                                     >
                                         <span className="text-xs md:text-sm font-semibold text-gray-800 group-hover:text-indigo-600">
@@ -337,10 +348,9 @@ export default function Hero() {
                             </div>
                         </CustomScrollWrapper>
 
-                        {/* Footer */}
                         <div className="mt-3 md:mt-4">
                             <a
-                                href="#"
+                                href="/blog"
                                 className="text-indigo-600 text-xs md:text-sm font-medium hover:underline flex items-center gap-1"
                             >
                                 View All Posts <span>→</span>
@@ -348,7 +358,6 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    {/* Get in Touch */}
                     <div className="bg-white text-gray-800 rounded-2xl p-6 flex flex-col justify-between gap-6 h-auto md:col-span-2 w-full relative overflow-hidden">
                         <div className="absolute -top-5 -right-5 w-20 h-20 bg-indigo-100 rounded-full opacity-30 animate-pulse"></div>
 
