@@ -60,13 +60,6 @@ export default function About() {
         }
     ];
 
-    const skills = [
-        { icon: <Code size={16} />, label: "Frontend", tech: ["React", "Next.js", "TypeScript", "Tailwind"] },
-        { icon: <Server size={16} />, label: "Backend", tech: ["Node.js", "Express", "Nest.js", "Python"] },
-        { icon: <Database size={16} />, label: "Database", tech: ["MongoDB", "PostgreSQL", "Firebase", "Redis"] },
-        { icon: <Cloud size={16} />, label: "DevOps", tech: ["Docker", "AWS", "CI/CD", "Git"] },
-    ];
-
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
 

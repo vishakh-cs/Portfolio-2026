@@ -2,16 +2,100 @@
 
 import Image from "next/image";
 import { AiFillGithub } from "react-icons/ai";
+import { FiArrowUpRight } from "react-icons/fi";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectsPage() {
+    const cardsRef = useRef<(HTMLElement | null)[]>([]);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            cardsRef.current.forEach((card) => {
+                if (!card) return;
+
+                const image = card.querySelector(".project-image");
+                const title = card.querySelector(".project-title");
+                const desc = card.querySelector(".project-desc");
+                const tags = card.querySelectorAll(".project-tag");
+
+                gsap.set([card, title, desc, tags], { opacity: 1 });
+
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        once: true, // 🔥 prevents replay bugs
+                    },
+                });
+
+                tl.from(card, {
+                    y: 80,
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: "power3.out",
+                    clearProps: "opacity,transform",
+                })
+                    .from(
+                        image,
+                        {
+                            scale: 1.15,
+                            duration: 1,
+                            ease: "power3.out",
+                            clearProps: "transform",
+                        },
+                        "-=0.4"
+                    )
+                    .from(
+                        title,
+                        {
+                            y: 30,
+                            opacity: 0,
+                            duration: 0.3,
+                            clearProps: "opacity,transform",
+                        },
+                        "-=0.5"
+                    )
+                    .from(
+                        desc,
+                        {
+                            y: 20,
+                            opacity: 0,
+                            duration: 0.3,
+                            clearProps: "opacity,transform",
+                        },
+                        "-=0.4"
+                    )
+                    .from(
+                        tags,
+                        {
+                            y: 15,
+                            opacity: 0,
+                            stagger: 0.05,
+                            duration: 0.2,
+                            clearProps: "opacity,transform",
+                        },
+                        "-=0.3"
+                    );
+            });
+        });
+
+        return () => ctx.revert();
+    }, []);
+
     const projects = [
         {
             id: 1,
             image: "/images/generative.png",
             title: "Generative",
             description:
-                "Generative is a collaborative workspace platform designed to facilitate seamless collaboration, document creation, and content publishing. Powered by Next.js, React, and Node.js Express, it offers robust features for teams to work together effectively and efficiently.",
+                "Generative is a collaborative workspace platform designed to facilitate seamless collaboration, document creation, and content publishing.",
             tags: ["Next.js", "React", "Node.js", "Express", "MongoDB"],
+            type: "Personal Project",
+            date: "August · 2024",
             github: "https://github.com/vishakh-cs/gen_client/tree/main/generative",
         },
         {
@@ -19,8 +103,10 @@ export default function ProjectsPage() {
             image: "/images/fittone.png",
             title: "Fit-Tone",
             description:
-                "Developed and maintained Fit-Tone, a comprehensive fitness tracker application enabling users to monitor their fitness progress and achieve their health objectives effectively.",
+                "A comprehensive fitness tracker application enabling users to monitor progress and achieve health goals effectively.",
             tags: ["React", "Fitness", "Charts", "UI/UX"],
+            type: "Personal Project",
+            date: "July · 2024",
             github: "https://github.com/vishakh-cs/Fit-Tone_Client",
         },
         {
@@ -28,8 +114,10 @@ export default function ProjectsPage() {
             image: "/images/classicsoul.png",
             title: "ClassicSoul",
             description:
-                "ClassicSoul is an e-commerce website designed to offer a seamless shopping experience for users interested in modern fashion and accessories.",
-            tags: ["E-commerce", "React", "Stripe", "UI"],
+                "An e-commerce platform delivering a seamless shopping experience for modern fashion and accessories.",
+            tags: ["React", "Stripe", "E-commerce", "UI"],
+            type: "Personal Project",
+            date: "February · 2025",
             github: "https://github.com/vishakh-cs/E-commerce",
         },
         {
@@ -37,82 +125,107 @@ export default function ProjectsPage() {
             image: "/images/netflixClone.png",
             title: "Netflix Clone",
             description:
-                "A streaming platform with core Netflix functionalities, allowing users to browse and manage their favorite movies and TV shows.",
+                "A streaming platform with core Netflix functionalities including authentication and browsing.",
             tags: ["React", "Firebase", "Streaming", "Auth"],
-            github: "", // no repo provided
+            type: "Practice Project",
+            date: "March · 2024",
+            github: "",
         },
         {
             id: 5,
             image: "",
             title: "ChatChat",
             description:
-                "ChatChat is a real-time chat platform built with Next.js, enabling users to communicate seamlessly with people online.",
+                "A real-time chat platform built with Next.js and WebSockets for seamless online communication.",
             tags: ["Next.js", "WebSockets", "Chat", "Realtime"],
+            type: "Personal Project",
+            date: "May · 2025",
             github: "https://github.com/vishakh-cs/chat_chat_client",
         },
     ];
 
     return (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {/* HEADER */}
-            <div className="text-center mb-16">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 text-sm font-semibold border border-gray-300">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            {/* Header */}
+            <div className="text-center mb-14">
+                <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-gray-100 text-sm font-medium text-gray-700 border">
                     Selected Projects
-                </div>
-
-                <p className="text-gray-600 max-w-2xl mx-auto mt-4">
-                    A collection of real-world, production-ready projects showcasing
-                    frontend, backend, and full-stack expertise.
+                </span>
+                <p className="mt-4 max-w-2xl mx-auto text-gray-600">
+                    A curated set of real-world projects showcasing full-stack expertise
+                    and production-ready UI.
                 </p>
             </div>
 
-            {/* PROJECT GRID */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                {projects.map((p) => (
+            {/* Projects */}
+            <div className="space-y-10">
+                {projects.map((p, i) => (
                     <article
                         key={p.id}
-                        className="group rounded-2xl border border-gray-200/70 bg-white/80 backdrop-blur-xl overflow-hidden flex flex-col"
+                        ref={(el) => {
+                            cardsRef.current[i] = el;
+                        }}
+                        className="group relative flex flex-col lg:flex-row gap-8 rounded-3xl bg-[#faf7f5] border border-gray-200 px-6 py-6 lg:px-10 lg:py-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                     >
-                        {/* IMAGE */}
-                        <div className="relative h-60 w-full overflow-hidden">
+                        <div className="relative w-full lg:w-105 h-55 rounded-2xl overflow-hidden bg-white project-image">
                             <Image
                                 src={p.image || "/images/projects.jpg"}
                                 alt={p.title}
                                 fill
-                                className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                                className="object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                         </div>
 
-                        {/* CONTENT */}
-                        <div className="p-6 flex flex-col flex-1">
-                            <h3 className="text-xl font-semibold text-gray-900 group-hover:text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 transition">
+                        {/* Content */}
+                        <div className="flex flex-col flex-1">
+                            <h3 className="text-2xl font-semibold text-gray-900 project-title">
                                 {p.title}
                             </h3>
 
-                            <p className="mt-3 text-gray-600 text-sm leading-relaxed flex-1">
+                            <p className="mt-3 text-gray-600 max-w-xl project-desc">
                                 {p.description}
                             </p>
 
-                            <div className="mt-4 flex flex-wrap gap-2">
+                            <div className="mt-5 flex flex-wrap gap-3">
                                 {p.tags.map((tag) => (
                                     <span
                                         key={tag}
-                                        className="px-3 py-1 rounded-full bg-gradient-to-br from-purple-50 to-blue-50 text-purple-700 text-xs border border-purple-200"
+                                        className="project-tag px-3 py-1 rounded-full bg-white text-xs font-medium text-gray-700 border"
                                     >
                                         {tag}
                                     </span>
                                 ))}
                             </div>
-                            {p.github && (
-                                <a
-                                    href={p.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="mt-6 inline-flex items-center justify-center gap-2 bg-black/90 text-white rounded-xl border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
-                                >
-                                    GitHub <AiFillGithub />
-                                </a>
-                            )}
+
+                            <div className="mt-auto pt-6 flex items-center justify-between">
+                                <span className="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-medium">
+                                    {p.type}
+                                </span>
+
+                                <div className="flex items-center gap-4">
+                                    <span className="text-sm text-gray-500">{p.date}</span>
+
+                                    {p.github && (
+                                        <a
+                                            href={p.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-10 h-10 rounded-full bg-white border hover:bg-gray-100 transition flex items-center justify-center"
+                                        >
+                                            <AiFillGithub />
+                                        </a>
+                                    )}
+
+                                    <button
+                                        onClick={() =>
+                                            window.open(p.github, "_blank", "noopener,noreferrer")
+                                        }
+                                        className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 transition flex items-center justify-center"
+                                    >
+                                        <FiArrowUpRight />
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </article>
                 ))}

@@ -2,7 +2,7 @@ import React, { JSX } from "react";
 
 export default function Contact(): JSX.Element {
   return (
-    <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center py-16 px-6">
+    <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center py-6 px-6">
       <div className="max-w-4xl w-full bg-white rounded-2xl shadow-lg p-10 border border-gray-200">
 
         {/* Heading */}

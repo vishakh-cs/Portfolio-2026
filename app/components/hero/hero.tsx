@@ -30,6 +30,7 @@ export default function Hero() {
 
                     {/* Projects */}
                     <div
+                        onClick={() => navigate.push('/projects')}
                         className="
     bg-white rounded-2xl overflow-hidden relative group
     flex flex-col
