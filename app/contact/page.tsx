@@ -1,7 +1,7 @@
 "use client";
 
-import React, { JSX, useState } from "react";
-import { motion } from "framer-motion";
+import { JSX, useState } from "react";
+import { motion, Variants } from "framer-motion";
 import {
   Phone,
   Mail,
@@ -9,9 +9,6 @@ import {
   FileText,
   Copy,
   Check,
-  MessageCircle,
-  MapPin,
-  Globe,
   Sparkles,
   ChevronRight,
 } from "lucide-react";
@@ -26,14 +23,28 @@ export default function Contact(): JSX.Element {
     setTimeout(() => setCopied(null), 2000);
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const cardVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
+      transition: {
+        delay: i * 0.15,
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1], 
+      },
     }),
-    hover: { y: -8, scale: 1.02 },
+    hover: {
+      y: -6,
+      scale: 1.02,
+      transition: {
+        duration: 0.2,
+        ease: [0.4, 0, 0.2, 1],
+      },
+    },
   };
 
   const floatingVariants = {
