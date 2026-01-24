@@ -310,7 +310,7 @@ export default function Hero() {
 
                     {/* Blog */}
                     <div className="bg-white rounded-2xl p-4 md:p-6 flex flex-col justify-between h-auto md:col-span-2 md:h-auto">
-                        <h3 className="font-bold text-base md:text-lg mb-3 md:mb-4 flex items-center gap-1 md:gap-2">
+                        <h3 className="font-bold text-xl md:text-lg mb-3 md:mb-4 flex items-center gap-1 md:gap-2">
                             📝 Blog
                         </h3>
 
@@ -339,7 +339,7 @@ export default function Hero() {
                                         href={'/blog'}
                                         className="group flex flex-col bg-gray-50 rounded-lg p-2 md:p-3 hover:bg-indigo-50 transition"
                                     >
-                                        <span className="text-xs md:text-sm font-semibold text-gray-800 group-hover:text-indigo-600">
+                                        <span className="text-xs md:text-sm font--semibold text-gray-600 group-hover:text-indigo-600">
                                             {post.title}
                                         </span>
                                         <span className="text-xs text-gray-500">{post.date}</span>
@@ -362,7 +362,7 @@ export default function Hero() {
                         <div className="absolute -top-5 -right-5 w-20 h-20 bg-indigo-100 rounded-full opacity-30 animate-pulse"></div>
 
                         <div className="flex flex-col gap-4">
-                            <h3 className="font-bold text-2xl flex items-center gap-2">
+                            <h3 className="font-bold text-xl flex items-center gap-2">
                                 🎉 Get in Touch
                             </h3>
                             <div className='balloon' />

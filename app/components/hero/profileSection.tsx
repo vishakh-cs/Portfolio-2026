@@ -27,12 +27,10 @@ export default function ProfileSection() {
                     </div>
 
                 </div>
-                {/* Name + Description */}
-                <p className='text-gray-700 text-lg leading-relaxed'>
+                <p className='text-gray-700 font-semibold text-sm leading-relaxed'>
                     I’m{" "}
-                    <span className='font-bold text-2xl text-black relative inline-block'>
+                    <span className='font-bold text-lg text-black relative inline-block'>
                         Vishakh
-                        {/* Fancy underline */}
                         <svg
                             className='absolute -bottom-1 left-0 w-full h-3 text-blue-500'
                             viewBox='0 0 100 20'
@@ -46,7 +44,7 @@ export default function ProfileSection() {
                             />
                         </svg>
                     </span>
-                    , an enthusiastic Software Developer from Kerala, India.
+                    , an enthusiastic Software Developer from Kerala, India, with 2+ years of hands-on experience.
                 </p>
             </div>
         </div>
