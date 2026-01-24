@@ -60,7 +60,7 @@ export default function Navbar() {
                 <Link
                   key={item.url}
                   href={item.url}
-                  className="relative px-4 py-2 text-sm font-medium text-gray-700"
+                  className="relative px-4 py-2 text-sm font-medium text-gray-900"
                 >
                   <span>{item.label}</span>
                   {active && (
