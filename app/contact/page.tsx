@@ -203,7 +203,6 @@ export default function Contact(): JSX.Element {
             </motion.div>
           ))}
         </div>
-
       </motion.div>
 
       <motion.a
