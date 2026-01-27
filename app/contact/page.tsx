@@ -129,7 +129,7 @@ export default function Contact(): JSX.Element {
               title: "Resume",
               value: "View / Download",
               color: "bg-purple-100 text-purple-600",
-              link: "/vishakhcsresume.pdf",
+              link: "/vishakh_cs_resume.pdf",
               action: "view",
             },
 

@@ -7,7 +7,7 @@ export default function ProfileCarousel() {
         {
             id: 1,
             type: "resume",
-            href: "/vishakhcsresume.pdf",
+            href: "/vishakh_cs_resume.pdf",
             title: "Download Resume",
             subtitle: "Grab my latest CV",
             icon: <path d="M12 16l4-5h-3V4h-2v7H8l4 5zm-7 2h14v2H5v-2z" />,
