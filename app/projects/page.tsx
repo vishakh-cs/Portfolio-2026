@@ -5,6 +5,18 @@ import { HeroParallax } from "@/components/ui/hero-parallax";
 export default function ProjectsPage() {
     const projects = [
         {
+            id: 0,
+            image: "/images/projects/naturalis.png",
+            title: "Naturalis",
+            description:
+                "A Scroll-Based website that provides information about different species of plants.",
+            tags: ["Next.js", "React"],
+            type: "Personal Project",
+            date: "April · 2026",
+            github: "https://natu-iota.vercel.app/",
+
+        },
+        {
             id: 1,
             image: "/images/generative.png",
             title: "Generative",
@@ -61,5 +73,5 @@ export default function ProjectsPage() {
         },
     ];
 
-  return <HeroParallax projects={projects} />
+    return <HeroParallax projects={projects} />
 }
