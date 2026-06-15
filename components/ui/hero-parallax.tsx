@@ -25,11 +25,17 @@ export type Project = {
 export const HeroParallax = ({ projects }: { projects: Project[] }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  // Always safe row slicing (desktop)
+  // Dynamically slice projects into 3 balanced rows (duplicating if < 9 to ensure dense grid)
+  const displayProjects = projects.length > 0 && projects.length < 9
+    ? Array.from({ length: 9 }, (_, i) => projects[i % projects.length])
+    : projects;
+
+  const count = displayProjects.length;
+  const perRow = Math.max(3, Math.ceil(count / 3));
   const rows = [
-    projects.slice(0, 4),
-    projects.slice(4, 8),
-    projects.slice(8, 12),
+    displayProjects.slice(0, perRow),
+    displayProjects.slice(perRow, perRow * 2),
+    displayProjects.slice(perRow * 2, perRow * 3),
   ].filter((row) => row.length > 0);
 
   const { scrollYProgress } = useScroll({
@@ -37,103 +43,101 @@ export const HeroParallax = ({ projects }: { projects: Project[] }) => {
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 220, damping: 24 };
+  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
   // Desktop motion
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 600]),
+    useTransform(scrollYProgress, [0, 1], [0, 1000]),
     springConfig
   );
 
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -600]),
+    useTransform(scrollYProgress, [0, 1], [0, -1000]),
     springConfig
   );
 
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [8, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
     springConfig
   );
 
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [12, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
     springConfig
   );
 
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.4], [-350, 200]),
+    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
     springConfig
   );
 
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.3, 1]),
+    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
     springConfig
   );
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-2 w-full">
-      <div
-        ref={ref}
-        className="relative min-h-[220vh] md:min-h-[300vh] py-24 md:py-40 antialiased perspective-[1000px]"
+    <div
+      ref={ref}
+      className="relative min-h-[220vh] md:min-h-[300vh] py-24 md:py-40 antialiased overflow-hidden w-full flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
+    >
+      <Header />
+
+      <motion.div
+        style={{ rotateX, rotateZ, translateY, opacity }}
+        className="hidden md:block space-y-16"
       >
-        <Header />
-
-        <motion.div
-          style={{ rotateX, rotateZ, translateY, opacity }}
-          className="hidden md:block space-y-16"
-        >
-          <AnimatePresence>
-            {rows.map((row, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`flex ${index % 2 === 0
-                    ? "flex-row-reverse space-x-reverse"
-                    : "flex-row"
-                  } space-x-20`}
-              >
-                {row.map((project) => (
-                  <ProjectCard
-                    key={project.id}
-                    project={project}
-                    translate={
-                      index % 2 === 0 ? translateX : translateXReverse
-                    }
-                  />
-                ))}
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        <div className="md:hidden mt-12 space-y-8">
-          {projects.map((project) => (
-            <MobileProjectCard key={project.id} project={project} />
+        <AnimatePresence>
+          {rows.map((row, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`flex ${index % 2 === 0
+                  ? "flex-row-reverse space-x-reverse"
+                  : "flex-row"
+                } space-x-20 mb-20`}
+            >
+              {row.map((project, projIdx) => (
+                <ProjectCard
+                  key={`${project.id}-${index}-${projIdx}`}
+                  project={project}
+                  translate={
+                    index % 2 === 0 ? translateX : translateXReverse
+                  }
+                />
+              ))}
+            </motion.div>
           ))}
-        </div>
+        </AnimatePresence>
+      </motion.div>
 
-        {/* CTA */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 flex justify-center pb-16"
-          style={{
-            // opacity: useTransform(scrollYProgress, [0.7, 0.9], [0, 1]),
-            y: useTransform(scrollYProgress, [0.7, 0.9], [80, 0]),
-          }}
-        >
-          <motion.a
-            href="/contact"
-            className="px-4 py-3 md:px-4 md:py-4 text-base md:text
-                       bg-linear-to-r from-purple-500 to-pink-500 
-                       text-white rounded-full shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Let’s build something impactful together
-          </motion.a>
-        </motion.div>
+      <div className="md:hidden mt-12 space-y-8 px-4">
+        {projects.map((project) => (
+          <MobileProjectCard key={project.id} project={project} />
+        ))}
       </div>
+
+      {/* CTA */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 flex justify-center pb-16"
+        style={{
+          // opacity: useTransform(scrollYProgress, [0.7, 0.9], [0, 1]),
+          y: useTransform(scrollYProgress, [0.7, 0.9], [80, 0]),
+        }}
+      >
+        <motion.a
+          href="/contact"
+          className="px-4 py-3 md:px-4 md:py-4 text-base md:text-lg
+                     bg-linear-to-r from-purple-500 to-pink-500 
+                     text-white rounded-full shadow-lg"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Let’s build something impactful together
+        </motion.a>
+      </motion.div>
     </div>
   );
 };
