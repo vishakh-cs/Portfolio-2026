@@ -43,14 +43,34 @@ export default function Navbar() {
       <nav className="sticky top-0 z-50 backdrop-blur">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-2">
 
-          <Image
-            src="/images/mylogo2.png"
+          {/* <Image
+            src="/images/mylogov.png"
             alt="Logo"
             width={48}
             height={48}
             className="h-10 w-10 sm:h-14 sm:w-14 object-cover"
             priority
-          />
+            unoptimized
+          /> */}
+
+          <div className="relative inline-block">
+            <h2 className="text-lg font-black text-slate-80">
+              VISHAKH
+            </h2>
+
+            <svg
+              className="absolute -bottom-1 left-0 w-full h-3 text-indigo-500"
+              viewBox="0 0 100 20"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0,10 C20,20 40,0 60,10 80,20 100,0 120,10"
+                stroke="currentColor"
+                strokeWidth="3"
+                fill="transparent"
+              />
+            </svg>
+          </div>
 
           <div className="hidden md:flex items-center px-6 py-2 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full gap-2">
             {navItems.map((item) => {

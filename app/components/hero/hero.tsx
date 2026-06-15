@@ -80,7 +80,7 @@ export default function Hero() {
                         {/* IMAGE */}
                         <div className="flex-1 relative">
                             <Image
-                                src="/images/dashboard-img.jpg"
+                                src="/images/project1img.png"
                                 alt="Dashboard Preview"
                                 fill
                                 className="
@@ -162,11 +162,11 @@ export default function Hero() {
                             <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
                                 <div
                                     className="
-          grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4
+          grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mt-[120px]
           transition-transform duration-500
 
           rotate-0 translate-y-0
-          md:rotate-[35deg] md:-translate-y-1/2
+          md:rotate-[20deg] md:-translate-y-1/2
           md:group-hover:rotate-0 md:group-hover:scale-105
         "
                                 >
