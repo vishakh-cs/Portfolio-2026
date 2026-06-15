@@ -54,8 +54,10 @@ export default function Navbar() {
           /> */}
 
           <div className="relative inline-block">
-            <h2 className="text-lg font-black text-slate-80">
-              VISHAKH
+            <h2
+              className="font-caveat text-3xl font-bold text-slate-800 tracking-wide rotate-[-2deg]"
+            >
+              Vishakh
             </h2>
 
             <svg
